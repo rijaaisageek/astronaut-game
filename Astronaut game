@@ -29,5 +29,27 @@ const ALIENS=[
         {say: "Some repairs need a trained crew. Asking for one is smart, not weak.", opts:[["Who could I ask?", "A doctor, a counselor, a campus service, oir a crisis line. Pick one.",.1],["I'm scared to.", "Scared and brave can live together. Start small.",.05]]},
         {say: "If things feel unsafe, contact your local emergency number or a crisis line right away. Deal?", opts:[["Deal.", "Good. Now let's finish that ship together.",0],["I'll remember.", "The details are at the end of the journey too.",0]]}]}];
 
-        
+        const PLANETS=[
+            {x:350, y:720, r:60, col:"#ff9e7a", col2:"#ffd0a8", ring:true},
+            {x:1450, y:130, r:45, col:"#6fb8ff", col2:"#bfe3ff", bands:true},
+            {x:2250, y:810, r:55, col:"#6fd08c", col2:"#d7ffd0", craters:true},
+            {x:2700, y:120, r:70, col:"#b48cff", col2:"#e3d0ff", ring:true, bands:true},
+            {x:3250, y:780, r:40, col:"#ffd37a", col2:"#ffd0b8", craters:true}];
 
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const hash=n=>{n=Math.sin(n*127.1)*43758.5453;return n-Math.floor(n)};
+let S,state="title", dlg=null,toast={t:"",life:0},keys={},hits=[],time=0,bt=0,cam={x:0,y:0};
+const stars=Array.from({length:150},()=>({x:Math.random()*W,y:Math.random()*H,z:.2+Math.random()*H,z:.2+Math.random()*.8,p:Math.random()*6}));
+function reset(){S={x:200,y:450,vx:0,vy:0,energy:100,clarity:.2,pulse:0,target:null,face:1};
+
+ITEMS.forEach(i=>i.got=false);ALIENS.forEach(a=>a.met=false);dlg=null}
+reset();
+const say=(t,s)=>toast={t,life:s};
+const nItems=()=>ITEMS.filter(i=>i.got).length, nAliens=()=>ALIENS.filter(a=>a.met).length;
+
+function signal(){
+    if(state!=="play"||S.pulse>0)return;
+    if (S.energy<10){say("Too tired to signal. Resty a moment, Then try again.",3);return}
+    S.energy-=10;S.pulse=.001;
+    let best=null,bd=520;
+}
