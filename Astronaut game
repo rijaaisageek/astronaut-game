@@ -1,0 +1,28 @@
+<!DOCTYPE html>"
+<html lang="en"><head><meta charset="utf-8">
+ <meta name="viewport" content="width=device-width", initial scale=1.0">
+ <title> Little Signal</title>
+ <style>
+    html, body {margin:0;height:100%;background:#0b0820;display:flex;align-items:center;justify-content:center;}
+    canvas{width:100%;max-width:calc(100vh*16/9);aspect-ratio:16/9;background:#14103a}
+</style></head><body><canvas id="c" width="800" height="450" tabindex="0" aria-label="Little signal game"></canvas><script>
+    "use strict";
+const cv=document.getElementById("c"),ctx=cv.getContext("2d");W=800,H=450,WORLD={w:3400,h:900};
+const FONT="Trebuchet MS, Verdana, sans-serif";
+
+const ITEMS= [
+    {id: "rest" ,name: "Rest Pod", x:600, y:200, col:"#9ad1ff", note:"Rest isn't laziness. Sleep is how a tired mind repairs itself."},
+    {id: "food" ,name: "Ration Pack", x:1300, y:650, col:"#ffd37a", note:"Eating regularly is a qiet, powerful kind of self care."},
+    {id: "spark" ,name: "Spark cell", x:1750, y:230, col:"#ffe45e", note:"Motivation often follows action. One tiny step is enough."},
+    {id: "radio" ,name: "Radio", x:2400, y:700, col:"#ff9ec7", note:"Reaching out feels heavy, then lighter. Say something to someone."},
+    {id: "mirror" ,name: "Mirror shard", x:2050, y:300, col:"#c9b8ff", note:"Depression lies about your worth. Kinder reflections exist :)."}];
+const ALIENS=[
+    {name: "Pip", role: "someone's whose been there too.", x:1000, y:420, col: "#ff8fb8", lines:[
+        {say: "Oh! A signal! I almost didn't answer. I drifted alone for a long time too.", opts:[["I'm done, really.", "That's okay. "Fine" is what we all say first. I'll stay first.",0],["I'm not fine.", "Thankyou for saying it. That took courage.",.1]]},
+        {say: "The fog is'nt a flaw in you. It's an illness, and it can ease.", opts:[["It feels endless.", "It feels that way from inside. It isn't. Let me patch your map.",0],["Can it really?.", "Yes. Many people recover with time and support.",.05]]}]},
+
+    {name: "Oma", role: "A patient listener", x:2000, y:520, col: "#6fe3c6", lines:[
+        {say: "Hello, traveller. No need to explain it perfectly. I'm just here to listen.", opts:[[" I've been so tired.", "Tired is real. You're allowed to say it.",.05],["I don't want to be a burden.", "You're not. Most people are glad be asked for help.",.1]]},
+        {say: "Small things count: one message, one meal, one walk. Your map is clearing, see?", opts:[["I'll try.", "That's all anyone asks.",0],["Thank you.", "Anytime. Truly.",.0]]}]},
+        
+    // im lowk tired soooooooooooooooooooooooooo i'm gonna play piano and continue this tommorrrrrrrrrrow yay. rn i guess i should add onemore alien?and uhhhhh i really hope i can get selected for snowglobe
