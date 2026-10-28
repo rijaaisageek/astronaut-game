@@ -18,11 +18,16 @@ const ITEMS= [
     {id: "mirror" ,name: "Mirror shard", x:2050, y:300, col:"#c9b8ff", note:"Depression lies about your worth. Kinder reflections exist :)."}];
 const ALIENS=[
     {name: "Pip", role: "someone's whose been there too.", x:1000, y:420, col: "#ff8fb8", lines:[
-        {say: "Oh! A signal! I almost didn't answer. I drifted alone for a long time too.", opts:[["I'm done, really.", "That's okay. "Fine" is what we all say first. I'll stay first.",0],["I'm not fine.", "Thankyou for saying it. That took courage.",.1]]},
+        {say: "Oh! A signal! I almost didn't answer. I drifted alone for a long time too.", opts:[["I'm done, really.", "That's okay. 'Fine' is what we all say first. I'll stay first.",0],["I'm not fine.", "Thankyou for saying it. That took courage.",.1]]},
         {say: "The fog is'nt a flaw in you. It's an illness, and it can ease.", opts:[["It feels endless.", "It feels that way from inside. It isn't. Let me patch your map.",0],["Can it really?.", "Yes. Many people recover with time and support.",.05]]}]},
 
     {name: "Oma", role: "A patient listener", x:2000, y:520, col: "#6fe3c6", lines:[
         {say: "Hello, traveller. No need to explain it perfectly. I'm just here to listen.", opts:[[" I've been so tired.", "Tired is real. You're allowed to say it.",.05],["I don't want to be a burden.", "You're not. Most people are glad be asked for help.",.1]]},
-        {say: "Small things count: one message, one meal, one walk. Your map is clearing, see?", opts:[["I'll try.", "That's all anyone asks.",0],["Thank you.", "Anytime. Truly.",.0]]}]},
+        {say: "Small things count: one message, one meal, one walk. Your map is clearing, see?", opts:[["I'll try.", "That's all anyone asks.",0],["Thank you.", "Anytime. Truly.",0]]}]}
+,
+{name: "ketto", role: "A repair-crew member", x:2900, y:600, col: "#ffb454", lines:[
+        {say: "Some repairs need a trained crew. Asking for one is smart, not weak.", opts:[["Who could I ask?", "A doctor, a counselor, a campus service, oir a crisis line. Pick one.",.1],["I'm scared to.", "Scared and brave can live together. Start small.",.05]]},
+        {say: "If things feel unsafe, contact your local emergency number or a crisis line right away. Deal?", opts:[["Deal.", "Good. Now let's finish that ship together.",0],["I'll remember.", "The details are at the end of the journey too.",0]]}]}];
+
         
-    // im lowk tired soooooooooooooooooooooooooo i'm gonna play piano and continue this tommorrrrrrrrrrow yay. rn i guess i should add onemore alien?and uhhhhh i really hope i can get selected for snowglobe
+
