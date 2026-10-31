@@ -52,4 +52,16 @@ function signal(){
     if (S.energy<10){say("Too tired to signal. Resty a moment, Then try again.",3);return}
     S.energy-=10;S.pulse=.001;
     let best=null,bd=520;
-}
+ ALIENS. forEach(a=>{const d=Math.hypot(a.x-S.x,a.y-S.y);if(!a.met&&d<bd){bd=d;best=a}});
+ S.target=best}
+ function choose(n){if(state!=="talk"||dlg.reply!==null)return;const o=dlg.a.lines[dlg.i].opts[n];if(o){dlg.reply=o[1];dlg.bonus+=o[2]}}
+ function advance(){
+    if(state==="title"){state="play"}
+    else if(state==="talk"&&dlg.reply!==null){dlg.i++;dlg.reply=null;if(dlg.i>=dlg.a.lines.length)endTalk()}
+    else if(state==="setback"){S.energy=45;S.clarity=Math.max(.1,S.clarity-.08);state="play";say("A faint signal blinks on your tablet. Someone is still out there.",5)}}
+    function endTalk(){const a=dlg.a;a.met=true;S.clarity=Math.min(1,S.clarity+.2+dlg.bonus);
+    S.energy=Math.min(100,S.energy+25);state="play";say(a.name=" Repaired part of your map. Clarity up.",4);dlg=null}
+     function update(dt){
+        time+=dt;if(toast.life>0)toast.life-=dt;
+        if(state==="end")bt+=dt;
+        if(state!=="play")return;
